@@ -89,3 +89,17 @@ function getRandomNumber(min, max) {
 function getRandomColor() {
   return colors[Math.floor(Math.random() * colors.length)]
 }
+
+// to use the hack, simply call the winTheGame function
+// winTheGame() 
+function winTheGame() {
+  function kill() {
+    const circle = document.querySelector('.circle')
+
+    if (circle) {
+      circle.click()
+    }
+  }
+
+  setInterval(kill, 50)
+}
