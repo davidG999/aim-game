@@ -11,20 +11,23 @@
 <body>
   <div class="screen">
     <h1>Aim Training</h1>
-    <a href="#" class="start">Start the game</a>
+    <a href="#" id="start">Start the game</a>
   </div>
 
   <div class="screen">
     <h1>Choose the time</h1>
-    <ul class="time-list">
+    <ul class="time-list" id="time-list">
       <li>
-        <button class="time-btn">10 sec</button>
+        <button class="time-btn" data-time="10">10 sec</button>
       </li>
       <li>
-        <button class="time-btn">20 sec</button>
+        <button class="time-btn" data-time="20">20 sec</button>
       </li>
       <li>
-        <button class="time-btn">30 sec</button>
+        <button class="time-btn" data-time="30">30 sec</button>
+      </li>
+      <li>
+        <button class="time-btn" data-time="60">1 min.</button>
       </li>
     </ul>
   </div>
@@ -34,6 +37,7 @@
     <div class="board" id="board"></div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 
 </html>
