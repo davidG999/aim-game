@@ -1,0 +1,1 @@
+# Aim training game w/ pure JS
