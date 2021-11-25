@@ -63,7 +63,11 @@ function finishGame() {
 
 function createRandomCircles() {
   const circle = document.createElement('div')
-  const size = getRandomNumber(10, 60)
+  let size = getRandomNumber(100, 160)
+  if (document.body.clientWidth <= 516) {
+    size = getRandomNumber(15, 30)
+  }
+
   const { width, height } = board.getBoundingClientRect()
   const x = getRandomNumber(0, width - size)
   const y = getRandomNumber(0, height - size)

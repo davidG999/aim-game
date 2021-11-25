@@ -22,8 +22,17 @@ a:hover {
   color: #16D9E3;
 }
 
-.start {
-  font-size: 1.5rem;
+#start {
+  font-size       : 2rem;
+  background-color: transparent;
+  border          : 2px solid #C0C0C0;
+  color           : #fff;
+  padding         : 15px;
+}
+
+#start:hover {
+  border: 2px solid #16D9E3;
+  color : #16D9E3;
 }
 
 h1 {
@@ -83,6 +92,7 @@ h1 {
 
 .board {
   display        : flex;
+  flex-direction : column;
   justify-content: center;
   align-items    : center;
   position       : relative;
@@ -95,8 +105,23 @@ h1 {
 }
 
 .circle {
-  background   : linear-gradient(90deg, #16D9E3 0%, #30C7EC 47%, #46AEF7 100%);
-  position     : absolute;
-  border-radius: 50%;
-  cursor       : pointer;
+  background-color: linear-gradient(90deg, #16D9E3 0%, #30C7EC 47%, #46AEF7 100%);
+  position        : absolute;
+  border-radius   : 50%;
+  cursor          : pointer;
+}
+
+@media (max-width: 516px) {
+  #start {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .board {
+    width : 350px;
+    height: 350px;
+  }
 }
