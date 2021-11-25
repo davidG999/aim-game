@@ -58,7 +58,9 @@ function finishGame() {
   board.innerHTML = `
   <h1>Your score: 
   <span class="primary">${score}</span>
-  </h1>`
+  </h1>
+  <button class="time-btn" onclick="window.location.reload()"> Restart </button>
+  `
 }
 
 function createRandomCircles() {
