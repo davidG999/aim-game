@@ -28,6 +28,7 @@ a:hover {
   border          : 2px solid #C0C0C0;
   color           : #fff;
   padding         : 15px;
+  cursor          : pointer;
 }
 
 #start:hover {
@@ -132,11 +133,11 @@ h1 {
 
 @media (max-width: 320px) {
   #start {
-    font-size: 1rem;
+    font-size: .7rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .time-btn {
