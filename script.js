@@ -4,7 +4,6 @@ const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
 
-//? colors
 const colors = ['#1abc9c', '#4efc53', '#3498db', '#9b59b6', '#ff3f34', '#f1c40f', '#f57e33', '#48dbfb']
 
 let time = 0
@@ -86,7 +85,6 @@ function createRandomCircles() {
   circle.classList.add('circle')
   board.append(circle)
 
-  //? colors
   const color = getRandomColor()
   circle.style.backgroundColor = color
 }
@@ -95,21 +93,21 @@ function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min)
 }
 
-//? colors
 function getRandomColor() {
   return colors[Math.floor(Math.random() * colors.length)]
 }
 
-// to use the hack, simply call the winTheGame function
-// winTheGame() 
-function winTheGame() {
-  function kill() {
-    const circle = document.querySelector('.circle')
+/* 
+  // to use the hack, simply call the winTheGame function
+  winTheGame() 
+  function winTheGame() {
+    function kill() {
+      const circle = document.querySelector('.circle')
 
-    if (circle) {
-      circle.click()
+      if (circle) {
+        circle.click()
+      }
     }
-  }
 
-  setInterval(kill, 50)
-}
+    setInterval(kill, 50)
+} */
