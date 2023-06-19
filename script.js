@@ -1,32 +1,30 @@
-const startBtn = document.querySelector('#start')
-const screens = document.querySelectorAll('.screen')
-const timeList = document.querySelector('#time-list')
-const timeEl = document.querySelector('#time')
-const board = document.querySelector('#board')
+const startBtn = $('#start')
+const screens = $('.screen')
+const timeList = $('#time-list')
+const timeEl = $('#time')
+const board = $('#board')
 
-const colors = ['#1abc9c', '#4efc53', '#3498db', '#9b59b6', '#ff3f34', '#f1c40f', '#f57e33', '#48dbfb']
+let time = 0;
+let score = 0;
 
-let time = 0
-let score = 0
-
-startBtn.addEventListener('click', (event) => {
+startBtn.on('click', function (event) {
   event.preventDefault()
-  screens[0].classList.add('up')
-})
+  screens.first().addClass('up')
+});
 
-timeList.addEventListener('click', (event) => {
-  if (event.target.classList.contains('time-btn')) {
-    time = parseInt(event.target.getAttribute('data-time'))
-    screens[1].classList.add('up')
+timeList.on('click', function (event) {
+  if ($(event.target).hasClass('time-btn')) {
+    time = parseInt($(event.target).attr('data-time'))
+    $(screens[1]).addClass('up')
     startGame()
   }
 })
 
-board.addEventListener('click', (event) => {
-  if (event.target.classList.contains('circle')) {
+board.on('click', function (event) {
+  if ($(event.target).hasClass('circle')) {
     score++
     createRandomCircles()
-    event.target.remove()
+    $(event.target).remove()
   }
 })
 
@@ -49,44 +47,50 @@ function decreaseTime() {
 }
 
 function setTime(value) {
-  timeEl.innerHTML = `00:${value}`
+  timeEl.html(`00:${value}`)
 }
 
 function finishGame() {
-  timeEl.parentNode.classList.add('hide')
-  board.innerHTML = `
-  <h1>Your score: 
-  <span class="primary">${score}</span>
-  </h1>
-  <button class="time-btn" onclick="window.location.reload()"> Restart </button>
-  `
+  timeEl.parent().addClass('hide')
+  board.html(`
+    <h1>Your score: 
+      <span class="primary">${score}</span>
+    </h1>
+    <button class="time-btn" onclick="window.location.reload()">
+      Restart
+    </button>
+  `)
 }
 
 function createRandomCircles() {
-  const circle = document.createElement('div')
-  let size
-  if (document.body.clientWidth <= 516) {
+  const circle = $('<div></div>');
+  let size;
+
+  if ($(document.body).innerWidth() <= 516) {
     size = getRandomNumber(15, 30)
-  } else if (document.body.clientWidth <= 320) {
+  } else if ($(document.body).innerWidth() <= 320) {
     size = getRandomNumber(20, 40)
   } else {
     size = getRandomNumber(20, 60)
   }
 
-  const { width, height } = board.getBoundingClientRect()
+  const height = board.height()
+  const width = board.width()
   const x = getRandomNumber(0, width - size)
   const y = getRandomNumber(0, height - size)
 
-  circle.style.top = `${x}px`
-  circle.style.left = `${y}px`
-  circle.style.width = `${size}px`
-  circle.style.height = `${size}px`
+  circle.css({
+    'top': `${x}px`,
+    'left': `${y}px`,
+    'width': `${size}px`,
+    'height': `${size}px`
+  });
 
-  circle.classList.add('circle')
+  circle.addClass('circle')
   board.append(circle)
 
   const color = getRandomColor()
-  circle.style.backgroundColor = color
+  circle.css('background', color)
 }
 
 function getRandomNumber(min, max) {
@@ -94,7 +98,9 @@ function getRandomNumber(min, max) {
 }
 
 function getRandomColor() {
-  return colors[Math.floor(Math.random() * colors.length)]
+  const colors = ['#1abc9c', '#4efc53', '#3498db', '#9b59b6', '#ff3f34', '#f1c40f', '#f57e33', '#48dbfb']
+
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 /* 
